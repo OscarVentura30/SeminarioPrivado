@@ -1,6 +1,6 @@
 export const paginaInicio = (req, res) => {
 
-    return res.render ('home', {
+    return res.render ('login', {
         user: 'oscar',
         titulo: 'Pagina Inicio',
     });

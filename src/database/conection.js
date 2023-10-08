@@ -2,7 +2,6 @@ import sql from 'mssql';
 import {config} from 'dotenv';
 config();
 
-
 const dbsettings = {
     user: process.env.DBUSER ,
     password: process.env.DBPASWORD,

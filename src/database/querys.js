@@ -1,5 +1,11 @@
-export const queries = {
+export const sprNombres = {
 
-    getProductos: 'select * from tb_productos'
+    getEmpresas: 'sp_getEmpresas'
+
+}
+
+export const DALUsuario =  {
+
+    postUsuario: 'sp_insertUsuario'
 
 }
