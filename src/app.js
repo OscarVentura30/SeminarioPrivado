@@ -3,6 +3,10 @@ import config from './config'
 
 const app = express();
 
+//HBS
+const hbs = require('hbs');
+hbs.registerPartials(__dirname + '/views/partials', function (err) {});
+
 // archivos estaticos
 
  app.use(express.static('public'));

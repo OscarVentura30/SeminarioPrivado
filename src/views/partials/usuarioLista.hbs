@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <header>
+        {{> navbar1 }}
+    </header>
+
+    <main>
+        <div class="container-fluid">
+                <div class="row" >
+                <div class="col-md-3">
+                    {{> sideBar1 }}
+                <div class="col-md-8" id="Contenido">
+                    <h3>Listado Usuarios</h3>
+                    <hr>
+                    <a href="/nuevoUsuario">
+                        <button type="button" class="btn btn-success btn-lg">Nuevo Usuario</button>
+                    </a>
+                    <br>
+                    <br>
+                    <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col" >Codigo Usuario</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">NIT</th>
+                            <th scope="col">DPI</th>
+                            <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
+</main>
+
+<script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+<script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+<script src="/js/usuario/UsuarioNuevo.js"></script>
+</body>
+</html>

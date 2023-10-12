@@ -6,6 +6,7 @@ export const sprNombres = {
 
 export const DALUsuario =  {
 
-    postUsuario: 'sp_insertUsuario'
+    getListaUsuarios: 'sp_getListaUsuarios',
+    insertUsuario: 'sp_insertUsuario'
 
 }
