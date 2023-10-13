@@ -1,6 +1,6 @@
 import {Router} from 'express';
 import { getListaUsuarios,usuarioVista, usuarioNuevo, insertUsuario, 
-        accesoUsuario} from "../controllers/usuarioController";
+        accesoUsuario,getListaUsuariosAccesos, InsertuserName} from "../controllers/usuarioController";
 
 const multer = require('multer');
 
@@ -32,6 +32,10 @@ router.get('/nuevoUsuario', usuarioNuevo);
 
 router.get('/accesoUsuario', accesoUsuario);
 
+router.get('/listaUsuariosAccesos', getListaUsuariosAccesos);
+
 router.post('/insertUsuario', upload.single('uploaded_file'), insertUsuario); 
+
+router.post('/InsertAcceso', InsertuserName);
 
 export default router;

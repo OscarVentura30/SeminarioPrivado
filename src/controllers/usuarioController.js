@@ -1,6 +1,6 @@
 import { getConnection , sql , querys } from "../database";
-import { queries, DALUsuario } from "../database/querys";
-import { cargarImagen } from "../helpers/cargarArchivo";
+import { DALUsuario } from "../database/querys";
+import { encryptPass,encryptText } from "../helpers/encrypt";
 
 export const usuarioVista = (req, res) => {
 
@@ -52,9 +52,26 @@ export const getListaUsuarios = async (req, res) => {
     }
 };
 
-export const insertUsuario = async (req, res) => {
+export const getListaUsuariosAccesos = async (req, res) => {
+    
+    try {
 
-    console.log(req.body , req.file);
+        const pool = await getConnection();
+        
+        const result = await pool.request().execute(DALUsuario.getListaUsuariosAccesos);
+
+        res.status(200);
+        res.json(result.recordset);
+
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message);
+        
+    }
+};
+
+export const insertUsuario = async (req, res) => {
 
     const {filename} = req.file;
 
@@ -86,6 +103,41 @@ export const insertUsuario = async (req, res) => {
             user: 'usuario',
             titulo: 'Lista de usuarios',
         });
+
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message);
+        
+    }
+    
+}
+
+export const InsertuserName = async (req, res) => {
+
+    const {
+        id, 
+        userName, 
+        pass} = req.body;
+
+    if (id == null || userName == null || pass == null) {
+
+        res.status(400);
+        res.send('Error 400')
+        
+    }
+    const _usarName = await encryptText(userName);
+    const _pass = await encryptPass(pass);
+    
+    try {
+        const pool = await getConnection();
+        
+        const result = await pool.request().input('id',sql.Int ,id)
+                                            .input('userName', sql.VarChar, _usarName)
+                                            .input('password' , sql.VarChar , _pass)
+                                            .execute(DALUsuario.insertAcces)
+        res.status(200);
+        res.send('OK')
 
     } catch (error) {
 

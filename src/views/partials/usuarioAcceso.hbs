@@ -6,7 +6,10 @@
     <title>Usuarios</title>
     <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
     <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
 </head>
 <body>
     <header>
@@ -22,12 +25,67 @@
                     <h3>{{titulo}}</h3>
                     <hr>
                     <p>{{descripcion}}</p>
+                    <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col" >Codigo Usuario</th>
+                            <th scope="col">DPI</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 </main>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: blue; color: white">
+        <h5 class="modal-title" id="exampleModalLabel">Configurar Acceso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" hidden>id</label>
+            <input type="numeric" class="form-control" id="id" name="id" hidden>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Usuario Sistema</label>
+            <input type="text" class="form-control" id="userName" name="userName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Password</label>
+            <input type="password" class="form-control" id="pass" name="pass">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Confirmar Password</label>
+            <input type="password" class="form-control" id="pass2" name="pass2">
+          </div>
+        </form>
+        <p class="text-danger" id="textoError"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="postAcceso()">Configurar</button>
+      </div>
+    </div>
+  </div>
+</div>    
+
 <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
 <script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+<script src="/js/usuario/usuarioAcceso.js"></script>
 </body>
 </html>
