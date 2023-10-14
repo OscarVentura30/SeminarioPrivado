@@ -2,7 +2,7 @@ const bcrypt =  require('bcryptjs');
 const Cryptr = require('cryptr');
 import {config} from 'dotenv';
 
-const cryptr = new Cryptr(process.env.KEY01); 
+const cryptr = new Cryptr(process.env.KEY01, { encoding: 'hex', pbkdf2Iterations: 10000, saltLength: 10 }); 
 
 export const encryptPass = async (pass) => {
 

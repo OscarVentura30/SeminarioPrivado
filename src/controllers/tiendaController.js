@@ -1,9 +1,9 @@
 import { getConnection , sql , querys } from "../database";
 import { queries } from "../database/querys";
 
-export const tiendaInicio = (req, res) => {
+export const tiendaInicioVista = (req, res) => {
 
-    return res.render ('tienda', {
+    return res.render ('tiendaInicio', {
         user: 'oscar',
         titulo: 'Tienda Colaboradores',
     });

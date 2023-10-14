@@ -1,9 +1,9 @@
 import {Router} from 'express';
-import { tiendaInicio, getProductos } from "../controllers/tiendaController";
+import { tiendaInicioVista, getProductos } from "../controllers/tiendaController";
 
 const router = Router();
 
-router.get('/tienda', tiendaInicio);
+router.get('/tienda', tiendaInicioVista);
 
 router.get('/productos', getProductos);
 
