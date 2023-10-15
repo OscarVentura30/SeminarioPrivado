@@ -1,8 +1,10 @@
-const bcrypt =  require('bcryptjs');
-const Cryptr = require('cryptr');
 import {config} from 'dotenv';
 
-const cryptr = new Cryptr(process.env.KEY01, { encoding: 'hex', pbkdf2Iterations: 10000, saltLength: 10 }); 
+const bcrypt =  require('bcryptjs');
+const CryptoJS = require('crypto-js');
+
+const clave = CryptoJS.enc.Hex.parse(process.env.KEY01);
+const iv = CryptoJS.enc.Hex.parse(process.env.KEY02);
 
 export const encryptPass = async (pass) => {
 
@@ -19,15 +21,15 @@ export const comparePass = async (passPlain, hashPass) => {
 
 export const encryptText = async (text) => {
 
-    return cryptr.encrypt(text);
+    const textoCifrado = CryptoJS.AES.encrypt(text, clave, { iv: iv });
+    return textoCifrado.toString();
 
 };
 
 export const desencryptText = async (text) => {
 
-    return cryptr.decrypt(text);
+    const bytes = CryptoJS.AES.decrypt(text, clave, { iv: iv });
+    const _text = bytes.toString(CryptoJS.enc.Utf8);
+    return _text;
 
 };
-
-
-

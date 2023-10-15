@@ -1,4 +1,8 @@
 import {validarUsuario} from '../helpers/validarUserName';
+import {generarToken} from '../helpers/getToken';
+import { token } from 'morgan';
+import {serialize} from 'cookie';
+
 
 export const paginaInicio = (req, res) => {
 
@@ -33,13 +37,15 @@ export const loginAutenticar = async (req, res) => {
 
     const UsuarioValido = await validarUsuario(usuario,clave,codigoEmpresa);
 
-    console.log(UsuarioValido);
+    if (UsuarioValido == '200') {
 
-    res.send(UsuarioValido);
+        const tokenListo = await generarToken(usuario,codigoEmpresa);
 
-    /*return res.render ('menuPrincipal', {
-        user: 'oscar',
-        titulo: 'Pagina Inicio',
-    });*/
+        res.cookie('tkn', tokenListo);
+
+        res.redirect ('/menu');
+    }
+
+    res.redirect ('/');
 
 };

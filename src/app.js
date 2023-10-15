@@ -1,6 +1,7 @@
 import express from 'express'
 import config from './config'
 
+const cookieParser  = require('cookie-parser');
 const app = express();
 
 //HBS
@@ -9,7 +10,7 @@ hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 
 // archivos estaticos
 
- app.use(express.static('public'));
+app.use(express.static('public'));
 
 //ajustes
 
@@ -21,5 +22,7 @@ app.set('views', __dirname + '/views/partials');
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+app.use(cookieParser());
 
 export default app;

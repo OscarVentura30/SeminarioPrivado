@@ -31,6 +31,7 @@ export const validarUsuario = async (usuario, clave, codigoEmpresa) => {
             {
                 return '200' // codigo interno usuario correcto
             }
+            return '400 E'
 
         }
         
