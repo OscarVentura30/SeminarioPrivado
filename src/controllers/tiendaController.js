@@ -4,7 +4,7 @@ import { queries } from "../database/querys";
 export const tiendaInicioVista = (req, res) => {
 
     return res.render ('tiendaInicio', {
-        user: 'oscar',
+        usuario: 'oscar',
         titulo: 'Tienda Colaboradores',
     });
 

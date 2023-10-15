@@ -1,7 +1,7 @@
 export const deduccionesInicioVista = (req, res) => {
 
     return res.render ('deduccionInicio', {
-        user: 'oscar',
+        usuario: 'oscar',
         titulo: 'Pagina Inicio',
     });
 

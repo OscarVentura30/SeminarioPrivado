@@ -5,7 +5,7 @@ import { encryptPass,encryptText } from "../helpers/encrypt";
 export const usuarioVista = (req, res) => {
 
     return res.render ('usuarioLista', {
-        user: 'usuario',
+        usuario: 'usuario',
         titulo: 'Lista de usuarios',
     });
 
@@ -14,7 +14,7 @@ export const usuarioVista = (req, res) => {
 export const usuarioNuevo = (req, res) => {
 
     return res.render ('usuarioNuevo', {
-        user: 'usuario',
+        usuario: 'usuario',
         titulo: 'Lista de usuarios',
     });
 

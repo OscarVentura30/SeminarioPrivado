@@ -3,7 +3,7 @@ import {validarUsuario} from '../helpers/validarUserName';
 export const paginaInicio = (req, res) => {
 
     return res.render ('login', {
-        user: 'oscar',
+        usuario: 'oscar',
         titulo: 'Pagina Inicio',
     });
 
@@ -12,7 +12,7 @@ export const paginaInicio = (req, res) => {
 export const menuPrincipal = (req, res) => {
 
     return res.render ('menuPrincipal', {
-        user: 'oscar',
+        usuario: 'oscar',
         titulo: 'Pagina Inicio',
     });
 

@@ -1,7 +1,7 @@
 export const bonificacionInicio = (req, res) => {
 
     return res.render ('bonificacionInicio', {
-        user: 'oscar',
+        usuario: 'oscar',
         titulo: 'Pagina Inicio',
     });
 

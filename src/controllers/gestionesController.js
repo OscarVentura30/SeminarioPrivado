@@ -1,7 +1,7 @@
 export const gestionInicioVista = (req, res) => {
 
     return res.render ('gestionInicio', {
-        user: 'oscar',
+        usuario: 'oscar',
         titulo: 'Pagina Inicio',
     });
 

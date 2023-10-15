@@ -9,6 +9,9 @@ import usuarioRutas from './routes/usuarioRouter';
 import bonificacionRutas from './routes/bonificacionRouter';
 import deduccionesRutas from './routes/deduccionRouter';
 import gestionRutas from './routes/gestionRouter';
+import bancoRutas from './routes/bancoRouter';
+import aporteRutas from './routes/aporteRouter';
+import nominaRutas from './routes/nominaRouter'
 
 /*
 import {getConnection} from './database/conection';*/
@@ -20,6 +23,9 @@ app.use(usuarioRutas);
 app.use(bonificacionRutas);
 app.use(deduccionesRutas);
 app.use(gestionRutas);
+app.use(bancoRutas);
+app.use(aporteRutas);
+app.use(nominaRutas);
 
 async function init() {
 
