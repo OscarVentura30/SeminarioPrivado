@@ -1,8 +1,14 @@
 new DataTable('#example', {
+    
+    language: {
+        url: '/DataTable/es-MX.json'
+    },
+
     ajax: {
         url: '/listaUsuarios',
         dataSrc: ''
     },
+
     columns: [
         { data: 'codigoUsuario' },
         { data: 'nombre' },

@@ -1,10 +1,8 @@
- function llenarSelectDesdeAPI() {
+ function llenarSelectDesdeAPI() 
+        {
             const selectEmpresa = document.getElementById('empresa');
-            
-            // URL de la API (reemplaza con la URL de tu API)
             const apiUrl = '/empresa';
             
-            // Realiza una solicitud GET a la API
             fetch(apiUrl)
                 .then(response => {
                     if (!response.ok) {
@@ -34,4 +32,4 @@
         }
 
         // Llama a la función para llenar el select cuando la página cargue
-        window.onload = llenarSelectDesdeAPI;
+window.onload = llenarSelectDesdeAPI;

@@ -1,11 +1,22 @@
 import { getConnection , sql , querys } from "../database";
 import { DALUsuario } from "../database/querys";
 import { encryptPass,encryptText } from "../helpers/encrypt";
+import {datosToken} from '../helpers/getDatosToken';
+import { token } from 'morgan';
+import {serialize} from 'cookie';
+
+
 
 export const usuarioVista = (req, res) => {
 
+    const {cookies} = req;
+
+    const token = cookies.tkn;
+
+    const data = datosToken(token);
+
     return res.render ('usuarioLista', {
-        usuario: 'usuario',
+        usuario: data[0],
         titulo: 'Lista de usuarios',
     });
 
@@ -13,8 +24,14 @@ export const usuarioVista = (req, res) => {
 
 export const usuarioNuevo = (req, res) => {
 
+    const {cookies} = req;
+
+    const token = cookies.tkn;
+
+    const data = datosToken(token);
+
     return res.render ('usuarioNuevo', {
-        usuario: 'usuario',
+        usuario: data[0],
         titulo: 'Lista de usuarios',
     });
 
@@ -22,8 +39,14 @@ export const usuarioNuevo = (req, res) => {
 
 export const accesoUsuario = (req, res) => {
 
+    const {cookies} = req;
+
+    const token = cookies.tkn;
+
+    const data = datosToken(token);
+
     return res.render ('usuarioAcceso', {
-        usuario: 'Usuario_conectado',
+        usuario: data[0],
         titulo: 'ACCESOS AL SISTEMA',
         descripcion: 'seleccione el usuario para configurar Acceso', 
         codigoGestion: 'acceso'
@@ -99,10 +122,7 @@ export const insertUsuario = async (req, res) => {
                                             .input('EstadoUsuario', sql.Bit, EstadoUsuario)
                                             .execute(DALUsuario.insertUsuario)
 
-        return res.render ('usuarioLista', {
-            user: 'usuario',
-            titulo: 'Lista de usuarios',
-        });
+        return res.status(200).json({ msg: 'OK'});
 
     } catch (error) {
 
@@ -137,7 +157,7 @@ export const InsertuserName = async (req, res) => {
                                             .input('password' , sql.VarChar , _pass)
                                             .execute(DALUsuario.insertAcces)
         res.status(200);
-        res.send('OK')
+        res.send('OK');
 
     } catch (error) {
 

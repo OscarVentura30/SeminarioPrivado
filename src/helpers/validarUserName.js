@@ -3,9 +3,9 @@ import { DALUsuario } from "../database/querys";
 import { comparePass, encryptText } from "../helpers/encrypt";
 
 export const validarUsuario = async (usuario, clave, codigoEmpresa) => {
-    console.log(usuario);
+    //console.log(usuario);
     const _usuario = await encryptText(usuario);
-    console.log(_usuario);
+    //console.log(_usuario);
 
     try {
 

@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken'); 
+import {config} from 'dotenv';
 
 export const generarToken = async (userName, idEmpresa)  => {
 

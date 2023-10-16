@@ -1,28 +1,50 @@
 import {validarUsuario} from '../helpers/validarUserName';
 import {generarToken} from '../helpers/getToken';
+import {datosToken} from '../helpers/getDatosToken';
 import { token } from 'morgan';
 import {serialize} from 'cookie';
 
 
 export const paginaInicio = (req, res) => {
 
+    const {cookies} = req;
+
+    if ('tkn' in cookies) {
+        
+        return res.redirect ('/menu');
+
+    }
+    
     return res.render ('login', {
-        usuario: 'oscar',
-        titulo: 'Pagina Inicio',
+        mensaje: 'Inicia Sesion',
     });
 
 };
 
 export const menuPrincipal = (req, res) => {
 
+    const {cookies} = req;
+
+    const token = cookies.tkn;
+
+    const data = datosToken(token);
+
     return res.render ('menuPrincipal', {
-        usuario: 'oscar',
+        usuario: data[0],
         titulo: 'Pagina Inicio',
     });
 
 };
 
 export const loginAutenticar = async (req, res) => {
+
+    const {cookies} = req;
+
+    if ('tkn' in cookies) {
+
+        return res.redirect ('/menu');
+
+    }
 
     const {usuario, 
             clave, 
@@ -45,7 +67,23 @@ export const loginAutenticar = async (req, res) => {
 
         res.redirect ('/menu');
     }
-
-    res.redirect ('/');
+    
+    return res.render ('login', {
+        usuario: usuario,
+        mensaje: 'Usario Invalido',
+    });
 
 };
+
+export const cerrarSesion = (req, res) => {
+
+    res.clearCookie('tkn');
+
+    return res.render('login' ,{
+        mensaje: 'Cerrar Sesion ok',
+    });
+}
+
+const cookies = (tk) => {
+    
+}

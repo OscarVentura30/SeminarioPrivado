@@ -1,12 +1,17 @@
 import {Router} from 'express';
-import {paginaInicio, menuPrincipal, loginAutenticar} from '../controllers/loginController';
+import {validarToken} from '../helpers/validarToken';
+import {paginaInicio, menuPrincipal, loginAutenticar, cerrarSesion} from '../controllers/loginController';
 
 const router = Router();
 
 router.get('/', paginaInicio);
 
+router.get('/login', paginaInicio);
+
 router.post('/login', loginAutenticar);
 
-router.get('/menu', menuPrincipal);
+router.get('/menu',validarToken, menuPrincipal);
+
+router.get('/cerrarSesion', cerrarSesion);
 
 export default router;

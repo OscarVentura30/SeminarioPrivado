@@ -18,8 +18,6 @@ const storage = multer.diskStorage({
     }
   })
 
-//const upload = multer({ dest: './public/data/uploads/'});
-
 const upload = multer({ storage: storage });
 
 const router = Router();
