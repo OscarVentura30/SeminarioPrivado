@@ -10,6 +10,10 @@ export const DALUsuario =  {
     insertUsuario: 'sp_insertUsuario',
     getListaUsuariosAccesos: 'sp_getListaAccesosUsuarios',
     insertAcces: 'sp_insertAccesoUsuario',
-    getUsuarioPorUsername: 'sp_getUsuarioPorUserName'
+    getUsuarioPorUsername: 'sp_getUsuarioPorUserName',
+    getUsuarioPorID: 'sp_getUsuarioPorID',
+    updateUsuarioId: 'sp_updateUsuario',
+    borrarUsuario: 'sp_borrarUsuario',
+    getUserName: 'sp_getUserNamePorId'
 
 }

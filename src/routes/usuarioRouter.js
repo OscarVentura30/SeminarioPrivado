@@ -1,6 +1,8 @@
 import {Router} from 'express';
+import {validarToken} from '../helpers/validarToken';
 import { getListaUsuarios,usuarioVista, usuarioNuevo, insertUsuario, 
-        accesoUsuario,getListaUsuariosAccesos, InsertuserName} from "../controllers/usuarioController";
+        accesoUsuario,getListaUsuariosAccesos, InsertuserName,
+        getUsuarioPorId, updateUsuarioPorID, borrarUsuario, getUserNameId} from "../controllers/usuarioController";
 
 const multer = require('multer');
 
@@ -13,16 +15,16 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
 
-        cb(null, Date.now() + '-' + file.originalname); // Nombre de archivo único
+        cb(null, Date.now() + '-' + file.originalname);
 
     }
-  })
+})
 
 const upload = multer({ storage: storage });
 
 const router = Router();
 
-router.get('/usuarios',usuarioVista);
+router.get('/usuarios',validarToken,usuarioVista);
 
 router.get('/listaUsuarios', getListaUsuarios);
 
@@ -32,8 +34,16 @@ router.get('/accesoUsuario', accesoUsuario);
 
 router.get('/listaUsuariosAccesos', getListaUsuariosAccesos);
 
+router.get('/api/usuario/:id',validarToken,getUsuarioPorId);
+
+router.get('/api/username/:id',getUserNameId);
+
 router.post('/insertUsuario', upload.single('uploaded_file'), insertUsuario); 
 
 router.post('/InsertAcceso', InsertuserName);
+
+router.put('/api/updateUsuario/:id',validarToken, updateUsuarioPorID);
+
+router.delete('/api/borrarUsuario/:id',validarToken, borrarUsuario);
 
 export default router;

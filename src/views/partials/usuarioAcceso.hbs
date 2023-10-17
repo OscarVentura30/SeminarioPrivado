@@ -59,27 +59,28 @@
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Usuario Sistema</label>
-            <input type="text" class="form-control" id="userName" name="userName">
+            <input type="text" class="form-control" id="userName" name="userName" required>
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Password</label>
-            <input type="password" class="form-control" id="pass" name="pass">
+            <input type="password" class="form-control" id="pass" name="pass"  oninput="validarClave()" required>
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Confirmar Password</label>
-            <input type="password" class="form-control" id="pass2" name="pass2">
+            <input type="password" class="form-control" id="pass2" name="pass2" oninput="validarClave()" required>
+          </div>
+        
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" onclick="postAcceso()" id="botonGuardar" disabled>Configurar</button>
           </div>
         </form>
-        <p class="text-danger" id="textoError"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" onclick="postAcceso()">Configurar</button>
-      </div>
     </div>
   </div>
 </div>    
-
+<script src="/js/sweetalert2@11.js"></script>
 <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
 <script src="/js/menu/sidebars.js"></script>
 <script src="/js/dataTable/datatables.min.js"></script>

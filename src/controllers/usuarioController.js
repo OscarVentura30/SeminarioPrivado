@@ -1,6 +1,6 @@
 import { getConnection , sql , querys } from "../database";
 import { DALUsuario } from "../database/querys";
-import { encryptPass,encryptText } from "../helpers/encrypt";
+import { encryptPass,encryptText,desencryptText } from "../helpers/encrypt";
 import {datosToken} from '../helpers/getDatosToken';
 import { token } from 'morgan';
 import {serialize} from 'cookie';
@@ -122,7 +122,7 @@ export const insertUsuario = async (req, res) => {
                                             .input('EstadoUsuario', sql.Bit, EstadoUsuario)
                                             .execute(DALUsuario.insertUsuario)
 
-        return res.status(200).json({ msg: 'OK'});
+        return res.redirect ('/usuarios');
 
     } catch (error) {
 
@@ -156,8 +156,7 @@ export const InsertuserName = async (req, res) => {
                                             .input('userName', sql.VarChar, _usarName)
                                             .input('password' , sql.VarChar , _pass)
                                             .execute(DALUsuario.insertAcces)
-        res.status(200);
-        res.send('OK');
+        return res.redirect ('/usuarios');
 
     } catch (error) {
 
@@ -166,4 +165,127 @@ export const InsertuserName = async (req, res) => {
         
     }
     
+}
+
+export const getUsuarioPorId = async (req, res) => {
+
+    const {id} = req.params;
+
+    try {
+
+        const pool = await getConnection();
+
+        const result = await pool
+                                .request()
+                                .input("id", sql.Int, id)
+                                .execute(DALUsuario.getUsuarioPorID);
+        
+        if (result.rowsAffected == 0)
+        {
+            return res.status(400).json({ msg: 'Error: No se encuentra recurso'});
+        }
+
+        res.json(result.recordset);
+
+    } catch (error) {
+        
+        res.status(500);
+        res.send(error.message);
+    }
+
+}
+
+export const updateUsuarioPorID = async (req, res) => {
+
+    const {id} = req.params; 
+
+    const {
+        nombreUsuario, 
+        apellidoUsuario, 
+        NITUsuario,
+        DPIUsuario,
+        telfono1,
+        telfono2, 
+        direccionUsuario, 
+        EstadoUsuario} = req.body;
+
+    try {
+        const pool = await getConnection();
+        
+        const result = await pool.request().input('id',sql.Int,id)
+                                            .input('nombreUsuario',sql.VarChar,nombreUsuario)
+                                            .input('apellidoUsuario', sql.VarChar, apellidoUsuario)
+                                            .input('NITUsuario' , sql.VarChar , NITUsuario)
+                                            .input('DPIUsuario', sql.VarChar, DPIUsuario)
+                                            .input('telfono1', sql.VarChar, telfono1)
+                                            .input('telfono2', sql.VarChar, telfono2)
+                                            .input('direccionUsuario', sql.VarChar , direccionUsuario)
+                                            .input('EstadoUsuario', sql.Bit, EstadoUsuario)
+                                            .execute(DALUsuario.updateUsuarioId)
+
+        return res.redirect ('/usuarios');
+
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message);
+        
+    }
+    
+}
+
+export const borrarUsuario = async (req, res) => {
+
+    const {id} = req.params;
+
+    try {
+
+        const pool = await getConnection();
+
+        const result = await pool.request().input("id", sql.Int, id)
+                                            .execute(DALUsuario.borrarUsuario);
+        
+        if (result.rowsAffected == 0)
+        {
+            return res.status(400).json({ msg: 'Error: Error al eliminar'});
+        }
+
+        res.status(200).json({ msg: 'Ok: Eliminar ok'})
+        
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message); 
+        
+    }
+}
+
+export const getUserNameId = async (req, res) => {
+
+    const {id} = req.params;
+
+    try {
+
+        const pool = await getConnection();
+
+        const result = await pool
+                                .request()
+                                .input("id", sql.Int, id)
+                                .execute(DALUsuario.getUserName);
+        
+        if (result.rowsAffected == 0)
+        {
+            return res.status(400).json({ msg: 'Error: 404 no encontrado'});
+        }
+
+        const _usarName = await desencryptText(result.recordset[0].username)
+
+        res.json({usuario:_usarName});
+
+    } catch (error) {
+        
+        res.status(500);
+        res.send(error.message);
+    }
+
 }
