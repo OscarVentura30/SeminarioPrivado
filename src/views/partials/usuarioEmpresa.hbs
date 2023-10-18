@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <header>
+        {{> navbar1 }}
+    </header>
+
+    <main>
+        <div class="container-fluid">
+                <div class="row" >
+                <div class="col-md-2">
+                    {{> sideBar1 }}
+                <div class="col-md-9" id="Contenido">
+                    <br>
+                    <h3>Configuración de usuario y Empresa</h3>
+                    <hr>
+                    <p class="text-start">Lista de usuarios </p>
+                     <table id="tablaUsuarioEmpresa" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col" >ID</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Puesto</th>
+                            <th scope="col">Departamento</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</main>
+
+<script src="/js/sweetalert2@11.js"></script>
+<script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+<script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/usuario/usuarioEmpresa.js"></script>
+
+</body>
+</html>
+
+<div class="modal fade" id="modalUsurioEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: blue; color: white">
+        <h5 class="modal-title" id="exampleModalLabel">Configurar Usuario y Empresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label" hidden>id</label>
+            <input type="numeric" class="form-control" id="idUsuarioEmpresa" name="idUsuarioEmpresa" hidden>
+          </div>
+          <div class="mb-3">
+            <label for="empresaUsuario" class="form-label">Empresa</label>
+                <select class="form-select" id="empresaUsuario" name="empresaUsuario" required>
+                    <option value="">Seleccionar empresa</option> 
+                </select>
+          </div>
+          <div class="mb-3">
+             <label for="puestoUsuario" class="form-label">Puesto</label>
+                <select class="form-select" id="puestoUsuario" name="puestoUsuario" required>
+                    <option value="">Seleccionar puesto</option> 
+                </select>
+          </div>
+          <div class="mb-3">
+            <label for="DepUsuario" class="form-label">Departamento</label>
+                <select class="form-select" id="DepUsuario" name="DepUsuario" required>
+                    <option value="">Seleccionar departamento</option> 
+                </select>
+          </div>
+          <div class="mb-3">
+            <label for="fechaInicio" class="col-form-label">Fecha Inicio Labores</label>
+            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
+          </div>
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" onclick="postAcceso()" id="botonGuardar">Configurar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>

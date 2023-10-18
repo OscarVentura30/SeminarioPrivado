@@ -14,6 +14,10 @@ export const DALUsuario =  {
     getUsuarioPorID: 'sp_getUsuarioPorID',
     updateUsuarioId: 'sp_updateUsuario',
     borrarUsuario: 'sp_borrarUsuario',
-    getUserName: 'sp_getUserNamePorId'
+    getUserName: 'sp_getUserNamePorId',
+    getUsuarioEmpresa: 'sp_getListaUsuarioEmpresa',
+    getPuestoUsuario: 'sp_getPuesto',
+    getUsuarioDepartamento: 'sp_getDepartamento',
+    getUsuarioEmpresaPorID: 'sp_usuarioEmpresaPorId'
 
 }
