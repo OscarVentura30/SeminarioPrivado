@@ -6,6 +6,8 @@ import { getEmpresas,usuarioEmpresaVista,getListaEmpresas,
 import {departamentoVista, getListaDepartamentos,insertDepartamento,
         updateDepartamento, getDepartamentoPorId, deleteDepartamento} from '../controllers/departamentoController';
 
+import {puestoRolVista, getListaPuestoRol} from '../controllers/puestoRolController';
+
 const router = Router();
 
 router.get('/empresaVista', usuarioEmpresaVista);
@@ -35,5 +37,11 @@ router.post('/api/insertDepartamento' ,insertDepartamento);
 router.put('/api/updateDepartamento/:id' , updateDepartamento);
 
 router.delete('/api/deleteDepartamento/:id' , deleteDepartamento);
+
+//////////////////////////////////////////// ROLES
+
+router.get('/puestoRolVista', puestoRolVista);
+
+router.get('/api/listaPuestoRol', getListaPuestoRol);
 
 export default router;

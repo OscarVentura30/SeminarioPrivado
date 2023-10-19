@@ -33,3 +33,7 @@ export const DALDepartamento = {
     getDepartamentoPorId: 'sp_getDepartamentoPorId',
     deleteDepartamentoPorId: 'sp_deleteDepartamentoPorId'
 }
+
+export const DALPuestoRol ={
+    getPuestoRol: 'sp_getPuestoRol'
+} 
