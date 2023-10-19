@@ -25,3 +25,11 @@ export const DALEmpresa =  {
     getEmpresaPorId: 'sp_getEmpresaPorId',
     deletteEmpresaPorId: 'sp_deleteEmpresa'
 }
+
+export const DALDepartamento = {
+    getDepartamentos:'sp_getDepartamentos',
+    insertDepartamento: 'sp_insertDepartamento',
+    updateDepartamento: 'sp_updateDepartamento',
+    getDepartamentoPorId: 'sp_getDepartamentoPorId',
+    deleteDepartamentoPorId: 'sp_deleteDepartamentoPorId'
+}

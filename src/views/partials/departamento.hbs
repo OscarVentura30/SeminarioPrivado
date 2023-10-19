@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamentos</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <header>
+        {{> navbar1 }}
+    </header>
+
+    <main>
+        <div class="container-fluid">
+                <div class="row" >
+                <div class="col-md-3">
+                    {{> sideBar1 }}
+                <div class="col-md-9" id="Contenido">
+                    <br>
+                    <h3>Departamentos Disponibles en Sistema</h3>
+                    <hr>
+                    <button type="button" class="btn btn-success" onclick="Nuevo()">Nuevo</button>
+                    <br>
+                    <p class="text-start">Lista de Departamentos</p>
+                     <table id="tablaDepartamentos" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col" >Codigo</th>
+                            <th scope="col">Departamento</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</main>
+
+
+<script src="/js/sweetalert2@11.js"></script>
+<script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+<script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/empresa/departamento.js"></script>
+
+</body>
+</html>
+
+<div class="modal fade" id="modalDepartamento" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: rgb(158, 158, 241); color: white">
+        <h5 class="modal-title" id="tituloModal"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nombreDepartamento" class="col-form-label">Nombre Departamento</label>
+            <input type="text" class="form-control" id="nombreDepartamento" name="nombreDepartamento" required>
+          </div>
+          <div class="mb-3">
+            <label for="descripcionArea" class="col-form-label">Descripcion</label>
+            <textarea class="form-control" id="descripcionArea" name="descripcionArea"></textarea>
+          </div>
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" onclick="guardarNuevo()" id="botonGuardar" >Guardar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div> 
+
+<div class="modal fade" id="modalModificar" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: blue; color: white">
+        <h5 class="modal-title" id="tituloModal">Modificar Empresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="idModificar" class="col-form-label" hidden>id</label>
+            <input type="number" class="form-control" id="idModificar" name="idModificar" hidden>
+          </div>
+          <div class="mb-3">
+            <label for="Departamento" class="col-form-label">Nombre Departamento</label>
+            <input type="text" class="form-control" id="Departamento" name="Departamento" required>
+          </div>
+          <div class="mb-3">
+            <label for="area" class="col-form-label">Descripcion</label>
+            <textarea class="form-control" id="area" name="area"></textarea>
+          </div>
+            <p class="text-danger" id="textoError"> </p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" onclick="guardarEditar()" id="botonGuardar" >Guardar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div> 
