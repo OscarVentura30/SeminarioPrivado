@@ -1,9 +1,3 @@
-export const sprNombres = {
-
-    getEmpresas: 'sp_getEmpresas'
-
-}
-
 export const DALUsuario =  {
 
     getListaUsuarios: 'sp_getListaUsuarios',
@@ -18,6 +12,16 @@ export const DALUsuario =  {
     getUsuarioEmpresa: 'sp_getListaUsuarioEmpresa',
     getPuestoUsuario: 'sp_getPuesto',
     getUsuarioDepartamento: 'sp_getDepartamento',
-    getUsuarioEmpresaPorID: 'sp_usuarioEmpresaPorId'
+    getUsuarioEmpresaPorID: 'sp_usuarioEmpresaPorId',
+    InsertUpdateUsuarioEmpresa: 'sp_InsertUsuarioEmpresa'
 
+}
+
+export const DALEmpresa =  {
+    getEmpresas: 'sp_getEmpresas',
+    getListaEmpresas: 'sp_getListaEmpresas',
+    insertEmpresa: 'sp_insertEmpresa',
+    updateEmpresa: 'sp_updateEmpresa',
+    getEmpresaPorId: 'sp_getEmpresaPorId',
+    deletteEmpresaPorId: 'sp_deleteEmpresa'
 }

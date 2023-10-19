@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <header>
+        {{> navbar1 }}
+    </header>
+
+    <main>
+        <div class="container-fluid">
+                <div class="row" >
+                <div class="col-md-3">
+                    {{> sideBar1 }}
+                <div class="col-md-9" id="Contenido">
+                    <br>
+                    <h3>Empresa registradas en el sistema</h3>
+                    <hr>
+                    <button type="button" class="btn btn-success" onclick="NuevaEmpresa()">Nueva Empresa</button>
+                    <p class="text-start">Lista de usuarios </p>
+                     <table id="tablaEmpresas" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col" >codigo</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</main>
+
+
+<script src="/js/sweetalert2@11.js"></script>
+<script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+<script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/empresa/empresa.js"></script>
+
+</body>
+</html>
+
+<div class="modal fade" id="modalEmpresa" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: rgb(158, 158, 241); color: white">
+        <h5 class="modal-title" id="tituloModal"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nombreEmpresa" class="col-form-label">Nombre Empresa</label>
+            <input type="text" class="form-control" id="nombreEmpresa" name="nombreEmpresa" required>
+          </div>
+          <div class="mb-3">
+            <label for="direccionEmpresa" class="col-form-label">Direccion</label>
+            <input type="text" class="form-control" id="direccionEmpresa" name="direccionEmpresa"  oninput="validarClave()" required>
+          </div>
+          <div class="mb-3">
+            <label for="telefonoEmpresa" class="col-form-label">Telefono</label>
+            <input type="number" class="form-control" id="telefonoEmpresa" name="telefonoEmpresa" oninput="validarClave()" required>
+          </div>
+        
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" onclick="guardarEmpresa()" id="botonGuardar" >Guardar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div> 
+
+<div class="modal fade" id="modalmodificarEmpresa" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: blue; color: white">
+        <h5 class="modal-title" id="tituloModal">Modificar Empresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="idEmpresa" class="col-form-label" hidden>id</label>
+            <input type="number" class="form-control" id="idEmpresa" name="id" hidden>
+          </div>
+          <div class="mb-3">
+            <label for="empresa" class="col-form-label">Nombre Empresa</label>
+            <input type="text" class="form-control" id="empresa" name="empresa" required>
+          </div>
+          <div class="mb-3">
+            <label for="direccion" class="col-form-label">Direccion</label>
+            <input type="text" class="form-control" id="direccion" name="direccion"  oninput="validarClave()" required>
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="col-form-label">Telefono</label>
+            <input type="number" class="form-control" id="telefono" name="telefono" oninput="validarClave()" required>
+          </div>
+        
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" onclick="modificarEmpresa()" id="botonGuardar" >Guardar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div> 

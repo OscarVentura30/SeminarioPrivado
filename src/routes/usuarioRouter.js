@@ -4,7 +4,7 @@ import { getListaUsuarios,usuarioVista, usuarioNuevo, insertUsuario,accesoUsuari
         getUsuarioPorId, updateUsuarioPorID, borrarUsuario, getUserNameId} from "../controllers/usuarioController";
 
 import {usuarioEmpresaVista,getListaUsuarioEmpresa,getListaUsuarioPuesto, 
-        getListaUsuarioDepartamento, getUsuarioEmpresaPorId} from '../controllers/usuarioEmpresaController';
+        getListaUsuarioDepartamento, getUsuarioEmpresaPorId, insertUsuarioEmpresa} from '../controllers/usuarioEmpresaController';
 
 const multer = require('multer');
 
@@ -59,5 +59,7 @@ router.get('/api/listaUsurioPuesto',getListaUsuarioPuesto);
 router.get('/api/listaUsurioDepartemanto',getListaUsuarioDepartamento);
 
 router.get('/api/usuarioEmpresa/:id', getUsuarioEmpresaPorId);
+
+router.post('/api/usuarioEmpresa', insertUsuarioEmpresa);
 
 export default router;

@@ -66,26 +66,56 @@ async function editar(idRegistro){
         
 }
 
+async function confirmarUsuarioEmpresa() {
+
+    const empresa = document.getElementById('empresaUsuario').value
+
+    const puesto = document.getElementById('puestoUsuario').value
+    const area = document.getElementById('DepUsuario').value
+    const fecha = document.getElementById('fechaInicio').value 
+    const usuario = document.getElementById('idUsuarioEmpresa').value
+
+    const url =('/api/usuarioEmpresa');
+
+    const fechaFormatoApi = fechaAPI(fecha);
+
+    const data = {
+        codigoEmpresa: empresa,
+        codigoUsuario: usuario,
+        codigoDepartamento:area,
+        codigoPuesto:puesto,
+        fechaInicio:fechaFormatoApi
+    }
+    console.log(fecha);
+    await fetch(url, {
+
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+
+        })
+        .then((res) => res.json())
+        .then((dat) => {
+
+            console.log('exito : ', dat);
+
+        })
+        .catch((error) => {
+
+            console.log(error);
+
+        });    
+    
+}
+
+
 function limpiarModal() {
-    // Limpia el campo "Empresa"
     document.getElementById('empresaUsuario').value = '';
-  
-    // Limpia el campo "Puesto"
     document.getElementById('puestoUsuario').value = '';
-  
-    // Limpia el campo "Departamento"
     document.getElementById('DepUsuario').value = '';
-  
-    // Limpia el campo "Fecha Inicio Labores"
     document.getElementById('fechaInicio').value = '';
   }
   
-
-
-
-
-
-
 
 // LLENAR DATOS  
 
@@ -179,4 +209,21 @@ async function getDepar(){
     .catch((error) => { 
         console.log('error al obtener datos, ', error)
     })
+}
+
+function fechaAPI(fecha) {
+
+    const _fecha = fecha.split('-');
+
+    if (_fecha.length === 3) {
+        const año = _fecha[0];
+        const mes = _fecha[1];
+        const dia = _fecha[2];
+      
+        const fechaFormateada = `${dia}/${mes}/${año}`;
+
+        return(fechaFormateada);
+      } else {
+        return("ERROR");
+      }
 }

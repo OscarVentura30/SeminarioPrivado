@@ -104,3 +104,33 @@ export const getUsuarioEmpresaPorId = async (req, res) => {
     }
 
 }
+
+export const insertUsuarioEmpresa = async (req, res) => {
+
+    const {
+        codigoEmpresa, 
+        codigoUsuario, 
+        codigoDepartamento,
+        codigoPuesto,
+        fechaInicio} = req.body;
+
+    try {
+        const pool = await getConnection();
+        
+        const result = await pool.request().input('codigoUsuario',sql.Int,codigoUsuario)
+                                            .input('codigoEmpresa',sql.Int,codigoEmpresa)
+                                            .input('codigoPuesto', sql.Int, codigoPuesto)
+                                            .input('codigoDepartamento' , sql.Int , codigoDepartamento)
+                                            .input('fechaInicio', sql.VarChar, fechaInicio)
+                                            .execute(DALUsuario.InsertUpdateUsuarioEmpresa)
+
+        return res.redirect ('/usuarioEmpresa');
+
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message);
+        
+    }
+    
+}
