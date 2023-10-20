@@ -6,6 +6,7 @@ import { getListaUsuarios,usuarioVista, usuarioNuevo, insertUsuario,accesoUsuari
 import {usuarioEmpresaVista,getListaUsuarioEmpresa,getListaUsuarioPuesto, 
         getListaUsuarioDepartamento, getUsuarioEmpresaPorId, insertUsuarioEmpresa} from '../controllers/usuarioEmpresaController';
 
+import {expedienteVista, getListaExpedienteEstatus,insertArchivoExpediente} from '../controllers/expedienteController';
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -61,5 +62,13 @@ router.get('/api/listaUsurioDepartemanto',getListaUsuarioDepartamento);
 router.get('/api/usuarioEmpresa/:id', getUsuarioEmpresaPorId);
 
 router.post('/api/usuarioEmpresa', insertUsuarioEmpresa);
+
+////////////////////////////////////////////////// EXPEDIENTE USUARIO
+
+router.get('/expediente',validarToken,expedienteVista);
+
+router.get('/api/listaExpediente',getListaExpedienteEstatus);
+
+router.put('/api/subirArchivoUsuario/:id', upload.single('uploaded_file'), insertArchivoExpediente); 
 
 export default router;

@@ -37,3 +37,10 @@ export const DALDepartamento = {
 export const DALPuestoRol ={
     getPuestoRol: 'sp_getPuestoRol'
 } 
+
+export const DALExpediente = {
+
+    getStatusExpedientes:'sp_getListaEstatusExpediente',
+    updateArchivoExpedienteUsuario : 'sp_insertArchivoExpediente'
+
+}

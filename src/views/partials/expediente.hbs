@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <header>
+        {{> navbar1 }}
+    </header>
+
+    <main>
+        <div class="container-fluid">
+                <div class="row" >
+                <div class="col-md-3">
+                    {{> sideBar1 }}
+                <div class="col-md-9" id="Contenido">
+                    <br>
+                    <h3>Registo de Expedientes de usuarios</h3>
+                    <hr>
+                    <p class="text-start">Lista de usuarios </p>
+                     <table id="tablaExpediente" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col" >Codigo Usuario</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</main>
+
+
+<script src="/js/sweetalert2@11.js"></script>
+<script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+<script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/empresa/expediente.js"></script>
+
+</body>
+</html>
+
+<div class="modal modal-xl fade" id="modalModificar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: blue; color: white">
+        <h5 class="modal-title" id="exampleModalLabel">Cargar Documentos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <label for="idUsuario" class="col-form-label" hidden>id</label>
+            <input type="numeric" class="form-control" id="idUsuario" name="idUsuario" hidden>
+          </div>
+          
+          <div class="row">
+                <div class="col">
+                    <label for="DPI" class="form-label">DPI</label>
+                    <input type="file" class="form-control" id="DPI" name="DPI" >   
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <br>
+                            <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerDPI">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <button type="button" class="btn btn-success" onclick="cargarArchivo(1)">Guardar</button>
+                            <button type="button" class="btn btn-primary">Descargar</button>
+                        </div>
+                    </div>
+                </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+                 <label for="diploma" class="form-label">Diploma</label>
+                <input type="file" class="form-control" id="diploma" name="diploma" >   
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <br>
+                        <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerDiploma">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <button type="button" class="btn btn-success" onclick="cargarArchivo(2)">Guardar</button>
+                        <button type="button" class="btn btn-primary">Descargar</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+                 <label for="titulo" class="form-label">Titulo</label>
+                <input type="file" class="form-control" id="titulo" name="titulo" >   
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <br>
+                        <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerTitulo">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <button type="button" class="btn btn-success" onclick="cargarArchivo(3)">Guardar</button>
+                        <button type="button" class="btn btn-primary">Descargar</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+                 <label for="policiacos" class="form-label">Policiacos</label>
+                <input type="file" class="form-control" id="policiacos" name="policiacos" >   
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <br>
+                        <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerPoliciacos">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <button type="button" class="btn btn-success" onclick="cargarArchivo(4)">Guardar</button>
+                        <button type="button" class="btn btn-primary">Descargar</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+                 <label for="penales" class="form-label">Penales</label>
+                <input type="file" class="form-control" id="penales" name="penales" >   
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <br>
+                        <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerPenales">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <button type="button" class="btn btn-success" onclick="cargarArchivo(5)">Guardar</button>
+                        <button type="button" class="btn btn-primary">Descargar</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
