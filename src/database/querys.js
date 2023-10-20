@@ -41,6 +41,8 @@ export const DALPuestoRol ={
 export const DALExpediente = {
 
     getStatusExpedientes:'sp_getListaEstatusExpediente',
-    updateArchivoExpedienteUsuario : 'sp_insertArchivoExpediente'
+    updateArchivoExpedienteUsuario : 'sp_insertArchivoExpediente',
+    getArchivoExpedienteUsuario: 'sp_getArchivoExpediente',
+    getStatusExpedienteUsuario: 'sp_getEstadoExpedienteUsuario'
 
 }

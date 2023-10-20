@@ -60,7 +60,7 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header" style="background-color: blue; color: white">
-        <h5 class="modal-title" id="exampleModalLabel">Cargar Documentos</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Getion de Documentos</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -73,7 +73,7 @@
           <div class="row">
                 <div class="col">
                     <label for="DPI" class="form-label">DPI</label>
-                    <input type="file" class="form-control" id="DPI" name="DPI" >   
+                    <input type="file" class="form-control" id="DPI" name="DPI" onchange="activarBoton(1)">   
                 </div>
                 <div class="col">
                     <div class="row">
@@ -82,8 +82,10 @@
                             <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerDPI">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
-                            <button type="button" class="btn btn-success" onclick="cargarArchivo(1)">Guardar</button>
-                            <button type="button" class="btn btn-primary">Descargar</button>
+                            <button type="button" class="btn btn-success" onclick="cargarArchivo(1)" id="guardar1" disabled>Guardar</button>
+                             <img src="/icon/vacio.png" alt="" width="40vh" id="estadoArchivoDPI">
+                            <button type="button" class="btn btn-primary" onclick="descargarArchivo(1)" disabled id="boton1">Descargar</button>
+                           
                         </div>
                     </div>
                 </div>
@@ -92,7 +94,7 @@
           <div class="row">
             <div class="col">
                  <label for="diploma" class="form-label">Diploma</label>
-                <input type="file" class="form-control" id="diploma" name="diploma" >   
+                <input type="file" class="form-control" id="diploma" name="diploma" onchange="activarBoton(2)">   
             </div>
             <div class="col">
                 <div class="row">
@@ -101,8 +103,9 @@
                         <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerDiploma">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                        <button type="button" class="btn btn-success" onclick="cargarArchivo(2)">Guardar</button>
-                        <button type="button" class="btn btn-primary">Descargar</button>
+                        <button type="button" class="btn btn-success" onclick="cargarArchivo(2)" id="guardar2" disabled >Guardar</button>
+                        <img src="/icon/vacio.png" alt="" width="40vh" id="estadoArchivoDiploma">
+                        <button type="button" class="btn btn-primary" onclick="descargarArchivo(2)" disabled id="boton2">Descargar</button>
                     </div>
                 </div>
             </div>
@@ -111,7 +114,7 @@
           <div class="row">
             <div class="col">
                  <label for="titulo" class="form-label">Titulo</label>
-                <input type="file" class="form-control" id="titulo" name="titulo" >   
+                <input type="file" class="form-control" id="titulo" name="titulo" onchange="activarBoton(3)">   
             </div>
             <div class="col">
                 <div class="row">
@@ -120,8 +123,9 @@
                         <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerTitulo">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                        <button type="button" class="btn btn-success" onclick="cargarArchivo(3)">Guardar</button>
-                        <button type="button" class="btn btn-primary">Descargar</button>
+                        <button type="button" class="btn btn-success" onclick="cargarArchivo(3)" id="guardar3" disabled>Guardar</button>
+                        <img src="/icon/vacio.png" alt="" width="40vh" id="estadoArchivoTitulo">
+                        <button type="button" class="btn btn-primary" onclick="descargarArchivo(3)" disabled id="boton3">Descargar</button>
                     </div>
                 </div>
             </div>
@@ -130,7 +134,7 @@
           <div class="row">
             <div class="col">
                  <label for="policiacos" class="form-label">Policiacos</label>
-                <input type="file" class="form-control" id="policiacos" name="policiacos" >   
+                <input type="file" class="form-control" id="policiacos" name="policiacos" onchange="activarBoton(4)">   
             </div>
             <div class="col">
                 <div class="row">
@@ -139,8 +143,9 @@
                         <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerPoliciacos">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                        <button type="button" class="btn btn-success" onclick="cargarArchivo(4)">Guardar</button>
-                        <button type="button" class="btn btn-primary">Descargar</button>
+                        <button type="button" class="btn btn-success" onclick="cargarArchivo(4)" id="guardar4" disabled>Guardar</button>
+                        <img src="/icon/vacio.png" alt="" width="40vh" id="estadoArchivoPoliciacos">
+                        <button type="button" class="btn btn-primary" onclick="descargarArchivo(4)" disabled id="boton4">Descargar</button>
                     </div>
                 </div>
             </div>
@@ -149,7 +154,7 @@
           <div class="row">
             <div class="col">
                  <label for="penales" class="form-label">Penales</label>
-                <input type="file" class="form-control" id="penales" name="penales" >   
+                <input type="file" class="form-control" id="penales" name="penales" onchange="activarBoton(5)">   
             </div>
             <div class="col">
                 <div class="row">
@@ -158,15 +163,16 @@
                         <div class="spinner-border text-success" role="status" style="visibility: hidden;" id="spinerPenales">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                        <button type="button" class="btn btn-success" onclick="cargarArchivo(5)">Guardar</button>
-                        <button type="button" class="btn btn-primary">Descargar</button>
+                        <button type="button" class="btn btn-success" onclick="cargarArchivo(5)" id="guardar5" disabled>Guardar</button>
+                        <img src="/icon/vacio.png" alt="" width="40vh" id="estadoArchivoPenales">
+                        <button type="button" class="btn btn-primary" onclick="descargarArchivo(5)" disabled id="boton5">Descargar</button>
                     </div>
                 </div>
             </div>
           </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModal()">Cerrar</button>
           </div>
         </form>
     </div>
