@@ -60,3 +60,12 @@ export const DALsalario = {
     getListaLiquidacion: 'sp_getListadoLiquidacion'
 
 }
+
+export const DALbonificacion = {
+    getListaVentas : 'sp_getRegistroVentas',
+    insertVenta: 'sp_insertVentas',
+
+    getListaProduccion: 'sp_getRegistroProduccion',
+    insertProduccion: 'sp_insertProduccion'
+
+}
