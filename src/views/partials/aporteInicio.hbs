@@ -6,6 +6,8 @@
     <title>Aportes</title>
     <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
     <link rel="shortcut icon" href="/icon/favicon.png">
 </head>
 <body>
@@ -21,12 +23,83 @@
                 <div class="col-md-8" id="Contenido">
                     <h3>Gestion de Aportes a otras Instituciones</h3>
                     <hr>
+
+                     <p class="text-start text-body-secondary">Los aportes se registran con tu Usuario</p>
+
+                    <button type="button" class="btn btn-success" onclick="Nuevo()">Nuevo Aporte</button>
+                    <br>
+                    <br>
+                     <table id="tablaAportes" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col">No.</th>
+                            <th scope="col">Institucion</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">fecha</th>
+                            <th scope="col">Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>    
                 </div>
+               
+                
             </div>
         </div>
 </main>
 
+<input type="number" value="{{codigoUsuario}}"  name="idUsuario" id="idUsuario" disabled hidden>
+
+<script src="/js/sweetalert2@11.js"></script>
 <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
 <script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/deduccion/aporte.js"></script>
+
 </body>
 </html>
+
+<div class="modal fade" id="modalNuevo" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: rgb(158, 158, 241); color: white">
+        <h5 class="modal-title" id="tituloModal"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="usuario" class="col-form-label" hidden>id</label>
+            <input type="number" class="form-control" id="usuario" name="usuario"  value="{{codigoUsuario}}" hidden disabled>
+          </div>
+
+          <div class="mb-3">
+            <label for="institucion" class="form-label">Seleccione Institucion</label>
+                <select class="form-select" id="institucion" name="institucion" required>
+
+                </select>
+            </div>
+
+           <div class="mb-3">
+            <label for="monto" class="col-form-label">Monto</label>
+            <input type="number" class="form-control" id="monto" name="monto" required>
+          </div>
+
+           
+
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" onclick="postNuevo()" id="botonGuardar" >Guardar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div> 
+

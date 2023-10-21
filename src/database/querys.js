@@ -72,3 +72,20 @@ export const DALbonificacion = {
     insertHora: 'sp_insertHora',
 
 }
+
+export const DALdeducciones = {
+    getListaAportes : 'sp_getRegistroAportes',
+    getListaAportesId : 'sp_getRegistroAportesId',
+    insertAporte: 'sp_insertAporte',
+
+    getListaInstitucion: 'sp_getListaInstitucion'
+
+
+
+
+}
+
+export const DALHelpers = {
+    getIdUserName : 'sp_getIdporUserName',
+
+}
