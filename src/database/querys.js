@@ -66,6 +66,9 @@ export const DALbonificacion = {
     insertVenta: 'sp_insertVentas',
 
     getListaProduccion: 'sp_getRegistroProduccion',
-    insertProduccion: 'sp_insertProduccion'
+    insertProduccion: 'sp_insertProduccion',
+
+    getListaHoras: 'sp_getListaHoras',
+    insertHora: 'sp_insertHora',
 
 }

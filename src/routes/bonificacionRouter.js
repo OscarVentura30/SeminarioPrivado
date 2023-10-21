@@ -1,11 +1,15 @@
 import {Router} from 'express';
 import {validarToken} from '../helpers/validarToken';
 import { bonificacionInicio,ventasVista,getListaVentas,insertVenta,
-         produccionVista, getListaProduccion,insertProduccion} from "../controllers/bonificacionController";
+         produccionVista, getListaProduccion,insertProduccion,getListaHoras,insertHoras} from "../controllers/bonificacionController";
 
 const router = Router();
 
 router.get('/bonificacion',validarToken, bonificacionInicio);
+
+router.get('/api/listaHoras',getListaHoras);
+
+router.post('/api/insertHora',insertHoras);
 
 router.get('/ventas',validarToken, ventasVista);
 

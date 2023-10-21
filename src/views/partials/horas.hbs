@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horas</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <header>
+        {{> navbar1 }}
+    </header>
+
+    <main>
+        <div class="container-fluid">
+                <div class="row" >
+                <div class="col-md-2">
+                    {{> bonificacionSideBar }}
+                <div class="col-md-9" id="Contenido">
+                    <br>
+                    <h3>Registro Horas Extras</h3>
+                    <hr>
+                    <button type="button" class="btn btn-success" onclick="Nuevo()">Nuevo Registro</button>
+                    <br>
+                    <br>
+                    <table id="tablaHoras" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col">No.</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">fecha</th>
+                            <th scope="col">Horas</th>
+                            <th scope="col">tipo Hora</th>
+                            <th scope="col">costo Hora</th>
+                            <th scope="col">Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
+</main>
+
+<script src="/js/sweetalert2@11.js"></script>
+<script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+<script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/bonificacion/horas.js"></script>
+</body>
+</html>
+
+<div class="modal fade" id="modalNuevo" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: rgb(158, 158, 241); color: white">
+        <h5 class="modal-title" id="tituloModal"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="id" class="col-form-label" hidden>id</label>
+            <input type="number" class="form-control" id="id" name="id" hidden>
+          </div>
+           <div class="mb-3">
+            <label for="usuario" class="form-label">Seleccione Usuario</label>
+                <select class="form-select" id="usuario" name="usuario" required>
+                    <option value="">Seleccionar Usuario</option> 
+                </select>
+          </div>
+
+           <div class="mb-3">
+            <label for="horas" class="col-form-label">Cantidad de horas a reportar</label>
+            <input type="number" class="form-control" id="horas" name="horas" required>
+          </div>
+
+           <div class="mb-3">
+            <label for="tipoHora" class="form-label">tipo Hora</label>
+                <select class="form-select" id="tipoHora" name="tipoHora" required>
+                    <option value="0">Simple</option> 
+                    <option value="1">Doble</option> 
+                </select>
+            </div>
+
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" onclick="postNuevo()" id="botonGuardar" >Guardar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div> 

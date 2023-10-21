@@ -12,12 +12,58 @@ export const bonificacionInicio = (req, res) => {
 
     const data = datosToken(token);
 
-    return res.render ('bonificacionInicio', {
+    return res.render ('horas', {
         usuario: data[0],
         titulo: 'Pagina Inicio',
     });
 
 };
+
+export const getListaHoras = async (req, res) => {
+    
+    try {
+
+        const pool = await getConnection();
+        
+        const result = await pool.request().execute(DALbonificacion.getListaHoras);
+
+        res.json(result.recordset);
+
+
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message);
+        
+    }
+};
+
+export const insertHoras = async (req, res) => {
+
+    const {
+        idUsuario, 
+        horas,
+        tipoHora} = req.body;
+
+
+    try {
+        const pool = await getConnection();
+        
+        const result = await pool.request().input('codigoUsuario',sql.Int,idUsuario)
+                                            .input('cantidadHoras', sql.Int, horas)
+                                            .input('tipoHora', sql.Int, tipoHora)
+                                            .execute(DALbonificacion.insertHora)
+
+        return res.redirect ('/ventas');
+
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message);
+        
+    }
+    
+}
 
 
 export const ventasVista = (req, res) => {
