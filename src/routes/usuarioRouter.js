@@ -9,6 +9,8 @@ import {usuarioEmpresaVista,getListaUsuarioEmpresa,getListaUsuarioPuesto,
 import {expedienteVista, getListaExpedienteEstatus,insertArchivoExpediente,
         descargarArchivoExpediente,getEstatusExpedienteUsuario} from '../controllers/expedienteController';
 
+import {referenciaVista, getListaReferencias,insertReferencia,deleteReferencia} from '../controllers/referenciaController';
+
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -76,5 +78,15 @@ router.put('/api/subirArchivoUsuario/:id', upload.single('uploaded_file'), inser
 router.post('/api/descargarArchivoUsuario/:id', descargarArchivoExpediente);
 
 router.get('/api/expedienteUsuario/:id',getEstatusExpedienteUsuario);
+
+////////////////////////////////////////////////// REFERENCIAS USUARIO
+
+router.get('/referencia',validarToken,referenciaVista);
+
+router.get('/api/listaReferencias',getListaReferencias);
+
+router.post('/api/insertReferencia', insertReferencia);
+
+router.delete('/api/borrarReferencia/:id', deleteReferencia);
 
 export default router;

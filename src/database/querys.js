@@ -46,3 +46,9 @@ export const DALExpediente = {
     getStatusExpedienteUsuario: 'sp_getEstadoExpedienteUsuario'
 
 }
+
+export const DALReferencias = {
+    getListaReferencias : 'sp_getListaReferencias',
+    insertReferencia: 'sp_insertReferencia',
+    deleteReferencia: 'sp_deleteReferencias'
+}
