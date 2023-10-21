@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <header>
+        {{> navbar1 }}
+    </header>
+
+    <main>
+        <div class="container-fluid">
+                <div class="row" >
+                <div class="col-md-2">
+                    {{> sideBar1 }}
+                <div class="col-md-9" id="Contenido">
+                    <h3>Nuevo Usuario</h3>
+                <hr>
+                <form class="row g-3" style="background-color: rgb(240, 240, 240);" action="/insertUsuario" method="post" enctype="multipart/form-data">
+                    <p class="fw-bold">Informacion del Usuario</p>
+                    <div class="col-md-4">
+                        <label for="nombreUsuario" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="apellidoUsuario" class="form-label" >Apellidos</label>
+                        <input type="text" class="form-control" id="apellidoUsuario" name="apellidoUsuario" required>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/img/perfil.png" class="rounded mx-auto d-block" alt="200x200" style="height: 100px; width: 100px;" id="imagenPerfil">
+                        <div class="mb-3">
+                            <label for="uploaded_file" class="form-label">Foto Perfil</label>
+                            <input class="form-control form-control-sm" id="uploaded_file" type="file" name="uploaded_file" accept="image/*" onchange="cargarImagen(this)">
+                        </div>
+                    </div> 
+                    <div class="col-md-3">
+                        <label for="NITUsuario" class="form-label">NIT</label>
+                        <input type="text" class="form-control" id="NITUsuario" name="NITUsuario" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="DPIUsuario" class="form-label">DPI</label>
+                        <input type="text" class="form-control" id="DPIUsuario" name="DPIUsuario" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telfono1" class="form-label">Telefono Movil</label>
+                        <input type="text" class="form-control" id="telfono1" name="telfono1">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telfono2" class="form-label">telefono Fijo</label>
+                        <input type="text" class="form-control" id="telfono2" name="telfono2">
+                    </div>
+                    <div class="col-6">
+                        <label for="direccionUsuario" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" id="direccionUsuario" name="direccionUsuario" placeholder="calle - zona - Municipio - Departamento - ">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="EstadoUsuario" class="form-label">Estatus</label>
+                        <select id="EstadoUsuario" class="form-select" name="EstadoUsuario">
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="col-12" style="text-align: center;">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <a href="/usuarios">
+                            <button type="button" class="btn btn-danger">Cancelar</button>
+                        </a>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</main>
+
+<script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+<script src="/js/menu/sidebars.js"></script>
+<script src="/js/usuario/UsuarioNuevo.js"></script>
+
+
+</body>
+</html>

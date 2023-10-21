@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOMIPRO login</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <div class="container mt-5">
+
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1>
+                    <img src="/icon/favicon.png" alt="" width="50vh"> 
+                    NOMIPRO
+                </h1>
+                <div class="card">
+                    <div class="card-header" style="background-color: blue; color:white" >Iniciar Sesión</div>
+                    <div class="card-body">
+                        <form action="login" method="post">
+                            <div class="mb-3">
+                                <label for="usuario" class="form-label">Usuario</label>
+                                <input type="text" class="form-control" id="usuario" name="usuario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clave" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="clave" name="clave" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="empresa" class="form-label">Empresa</label>
+                                <select class="form-select" id="empresa" name="codigoEmpresa" required>
+                                    <option value="">Seleccionar empresa</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                            </div>
+                        </form>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert" style="visibility: hidden;">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                        <div style="align-items: center; text-aling:center ">
+                            <p id="lblError" style="visibility: visible;">{{mensaje}}</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>
