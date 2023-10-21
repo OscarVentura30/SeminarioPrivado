@@ -52,3 +52,11 @@ export const DALReferencias = {
     insertReferencia: 'sp_insertReferencia',
     deleteReferencia: 'sp_deleteReferencias'
 }
+
+export const DALsalario = {
+    getListaSalario : 'sp_getEstadoSalarioUsuarios',
+    insertSalarioUsuario: 'sp_insertSalario',
+    getHistorialAumentos: 'sp_getHistorialAumentos',
+    getListaLiquidacion: 'sp_getListadoLiquidacion'
+
+}

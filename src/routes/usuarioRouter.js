@@ -11,6 +11,9 @@ import {expedienteVista, getListaExpedienteEstatus,insertArchivoExpediente,
 
 import {referenciaVista, getListaReferencias,insertReferencia,deleteReferencia} from '../controllers/referenciaController';
 
+import {salarioVista, getListaSalarioUsuario, insertSalarioUsuario, getHistorialAumentos,
+        aumentosVista, getListaLiquidacion,liquidacionVista} from '../controllers/salarioController'
+
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -88,5 +91,22 @@ router.get('/api/listaReferencias',getListaReferencias);
 router.post('/api/insertReferencia', insertReferencia);
 
 router.delete('/api/borrarReferencia/:id', deleteReferencia);
+
+////////////////////////////////////////////////// SALARIO USUARIO
+
+router.get('/salario',validarToken,salarioVista);
+
+router.get('/api/listaSalario',getListaSalarioUsuario);
+
+router.post('/api/insertSalario', insertSalarioUsuario);
+
+router.get('/aumentos',validarToken,aumentosVista);
+
+router.get('/api/historialAumentos',getHistorialAumentos);
+
+router.get('/liquidacion',validarToken,liquidacionVista);
+
+router.get('/api/listaLiquidacion',getListaLiquidacion);
+
 
 export default router;

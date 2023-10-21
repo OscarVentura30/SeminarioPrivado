@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salario</title>
+    <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
+    <link rel="shortcut icon" href="/icon/favicon.png">
+</head>
+<body>
+    <header>
+        {{> navbar1 }}
+    </header>
+
+    <main>
+        <div class="container-fluid">
+                <div class="row" >
+                <div class="col-md-2">
+                    {{> sideBar1 }}
+                <div class="col-md-9" id="Contenido">
+                    <br>
+                    <h3>Salario de Usuarios</h3>
+                    <hr>
+                    <br>
+                    <table id="tablaSalario" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col" >ID</th>
+                            <th scope="col" >Empleado</th>
+                            <th scope="col">ordinario</th>
+                            <th scope="col">ExtraOrdinario</th>
+                            <th scope="col">Anticipo</th>
+                            <th scope="col">bono14</th>
+                            <th scope="col">Aguinaldo</th>
+                            <th scope="col">IGSS</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
+</main>
+
+<script src="/js/sweetalert2@11.js"></script>
+<script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
+<script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/usuario/salario.js"></script>
+</body>
+</html>
+
+
+<div class="modal fade" id="modalSalario" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: blue; color: white">
+        <h5 class="modal-title" id="tituloModal">Actualizar Salario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="idUsuario" class="col-form-label" hidden>id</label>
+            <input type="number" class="form-control" id="idUsuario" name="idUsuario" hidden>
+          </div>
+          <div class="mb-3">
+            <label for="salarioBase" class="col-form-label">Salario base</label>
+            <input type="number" class="form-control" id="salarioBase" name="salarioBase" required>
+          </div>
+          <div class="mb-3">
+            <label for="SalarioExtra" class="col-form-label">Salario ExtraOrdinario</label>
+            <input type="number" class="form-control" id="SalarioExtra" name="SalarioExtra" required>
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="col-form-label">Los cambios son registrados como Aumentos</label>
+          </div>
+        
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" onclick="guardar()" id="botonGuardar" >Guardar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div> 
