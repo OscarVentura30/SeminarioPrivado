@@ -6,6 +6,8 @@
     <title>Gestiones</title>
     <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
     <link rel="shortcut icon" href="/icon/favicon.png">
 </head>
 <body>
@@ -16,17 +18,79 @@
     <main>
         <div class="container-fluid">
                 <div class="row" >
-                <div class="col-md-3">
+                <div class="col-md-2">
                     {{> gestionSideBar }}
                 <div class="col-md-8" id="Contenido">
-                    <h3>Gestion de Solicitudes</h3>
+                    <br>
+                    <h3>solicitud de Ausencias</h3>
                     <hr>
+
+                     <p class="text-start text-body-secondary">Las gestiones se registran con tu Usuario</p>
+
+                    <button type="button" class="btn btn-success" onclick="Nuevo()">Ingresar solicitud</button>
+                    <br>
+                    <br>
+                     <table id="tablaAusencias" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col">No.</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">Fecha Solicitud</th>
+                            <th scope="col">Dias Solicitados</th>
+                            <th scope="col">Descuento</th>
+                            <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>      
                 </div>
+               
+                
             </div>
         </div>
 </main>
 
+<input type="number" value="{{codigoUsuario}}"  name="idUsuario" id="idUsuario" disabled hidden>
+
+<script src="/js/sweetalert2@11.js"></script>
 <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
 <script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/gestion/gestionInicio.js"></script>
+
 </body>
 </html>
+
+<div class="modal fade" id="modalNuevo" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: rgb(158, 158, 241); color: white">
+        <h5 class="modal-title" id="tituloModal"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="id" class="col-form-label" hidden>id</label>
+            <input type="number" class="form-control" id="id" name="id" value="{{codigoUsuario}}" hidden>
+          </div>
+
+           <div class="mb-3">
+            <label for="dias" class="col-form-label">Cantidad de Dias</label>
+            <input type="number" class="form-control" id="dias" name="dias" required>
+          </div>
+            <p class="text-danger" id="textoError"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="limpiarModal()" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" onclick="postNuevo()" id="botonGuardar" >Guardar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div> 
