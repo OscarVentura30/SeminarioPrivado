@@ -107,3 +107,37 @@ export const getListaAportes = async (req, res) => {
     }
 };
 
+export const registroComprasVista = (req, res) => {
+
+    const {cookies} = req;
+
+    const token = cookies.tkn;
+
+    const data = datosToken(token);
+
+    return res.render ('compras', {
+        usuario: data[0],
+        titulo: 'Pagina Inicio',
+    });
+
+};
+
+export const getListaCompras = async (req, res) => {
+    
+    try {
+
+        const pool = await getConnection();
+        
+        const result = await pool.request().execute(DALdeducciones.getRegistroCompras);
+
+        res.json(result.recordset);
+
+
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message);
+        
+    }
+};
+

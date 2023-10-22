@@ -83,9 +83,20 @@ export const DALdeducciones = {
     getListaAusencias: 'sp_getResgistroAusencias',
     getListaAusenciasId:'sp_getResgistroAusenciasid',
     insertSolicituAusencia: 'sp_insertSolicitudAusencia',
-    aprobarSolicituAusencia : 'sp_aprobarSolicitudAusencia'
+    aprobarSolicituAusencia : 'sp_aprobarSolicitudAusencia',
+
+    getRegistroCompras : 'sp_getRegistroCompras'
 
 }
+
+export const DALtienda = {
+    getProductosTienda : 'sp_getProductosTienda',
+    InsertCompraTienda: 'sp_insertCompra',
+    getRegistroComprasId : 'sp_getRegistroComprasId'
+
+}
+
+
 
 export const DALHelpers = {
     getIdUserName : 'sp_getIdporUserName',
