@@ -99,7 +99,8 @@ export const DALtienda = {
 export const DALBanco = {
     getEstadoPrestamoId : 'sp_getPrestamoId',
     getCuotasPorIdUsuario : 'sp_getCuotasPorIdUsuario',
-    insertCreditoUsuario: 'sp_insertPrestamo'
+    insertCreditoUsuario: 'sp_insertPrestamo',
+    getTransferenciasBancos: 'sp_getTransferenciasBancos'
 
 }
 

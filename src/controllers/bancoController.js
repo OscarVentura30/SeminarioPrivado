@@ -23,6 +23,23 @@ export const bancoInicioVista =  async (req, res) => {
 
 };
 
+export const bancoTransferenciaVista =  async (req, res) => {
+
+    const {cookies} = req;
+
+    const token = cookies.tkn;
+
+    const data = datosToken(token);
+
+    const id = await datosPorUserName(data[0])
+
+    return res.render ('bancosTransferencias', {
+        usuario: data[0],
+        codigoUsuario: id
+    });
+
+};
+
 export const getEstadoCredito = async (req, res) => {
 
     const {id} = req.params;
@@ -82,6 +99,27 @@ export const insertCreditoUsuario = async (req, res) => {
                                             .input('plazo', sql.Int ,plazo )
                                             .input('monto', sql.Numeric ,monto )
                                             .execute(DALBanco.insertCreditoUsuario);
+
+        res.json(result.recordset);
+
+
+    } catch (error) {
+
+        res.status(500);
+        res.send(error.message);
+        
+    }
+};
+
+
+
+export const getTransferenciasBancos = async (req, res) => {
+    
+    try {
+
+        const pool = await getConnection();
+        
+        const result = await pool.request().execute(DALBanco.getTransferenciasBancos);
 
         res.json(result.recordset);
 
