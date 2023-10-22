@@ -78,10 +78,12 @@ export const DALdeducciones = {
     getListaAportesId : 'sp_getRegistroAportesId',
     insertAporte: 'sp_insertAporte',
 
-    getListaInstitucion: 'sp_getListaInstitucion'
+    getListaInstitucion: 'sp_getListaInstitucion',
 
-
-
+    getListaAusencias: 'sp_getResgistroAusencias',
+    getListaAusenciasId:'sp_getResgistroAusenciasid',
+    insertSolicituAusencia: 'sp_insertSolicitudAusencia',
+    aprobarSolicituAusencia : 'sp_aprobarSolicitudAusencia'
 
 }
 
