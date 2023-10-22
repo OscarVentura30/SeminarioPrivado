@@ -96,6 +96,15 @@ export const DALtienda = {
 
 }
 
+export const DALBanco = {
+    getEstadoPrestamoId : 'sp_getPrestamoId',
+    getCuotasPorIdUsuario : 'sp_getCuotasPorIdUsuario',
+    insertCreditoUsuario: 'sp_insertPrestamo'
+
+}
+
+
+
 
 
 export const DALHelpers = {
