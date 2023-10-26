@@ -6,6 +6,8 @@
     <title>NOMINA</title>
     <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
     <link rel="shortcut icon" href="/icon/favicon.png">
 </head>
 <body>
@@ -13,21 +15,90 @@
         {{> navbar1 }}
     </header>
 
-    <main>
-        <div class="container-fluid">
-                <div class="row" >
-                <div class="col-md-2">
-                    {{> nominaSideBar }}
-                <div class="col-md-8" id="Contenido">
-                    <h3>Consulta de Nominas</h3>
-                    <hr>
-                </div>
+    <main style="height: 200%">
+        <div class="container-fluid" style="text-align: center;">
+            <br>            
+            <h1>
+              <img src="/icon/favicon.png" alt="" width="50vh"> 
+              NOMIPRO v.1.0.0  
+            </h1>
+                 &nbsp;&nbsp; <button type="button" class="btn btn-primary" hidden>Generar</button>&nbsp;&nbsp;&nbsp;&nbsp; <div class="spinner-border text-primary" role="status" id="spinerCargar" style="visibility: hidden;"> <span class="visually-hidden">Loading...</span> </div>
+            <hr>
+            <br>
+            <h2>Base</h2>
+            
+            <div class="container-fluid">
+                    <table id="tablaSalario" class="table table-striped" style="width:60%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col" >ID</th>
+                            <th scope="col" >Empleado</th>
+                            <th scope="col">ordinario</th>
+                            <th scope="col">ExtraOrdinario</th>
+                            <th scope="col">Anticipo</th>
+                            <th scope="col">bono14</th>
+                            <th scope="col">Aguinaldo</th>
+                            <th scope="col">IGSS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    
             </div>
+            <hr>
+               
+                   
         </div>
+        <div class="container-fluid" style="text-align: center;">
+            <h2>Bonos por Horas Extras</h2>
+             <table id="tablaHoras" class="table table-striped" style="width:50%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col">No.</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">fecha</th>
+                            <th scope="col">Horas</th>
+                            <th scope="col">tipo Hora</th>
+                            <th scope="col">costo Hora</th>
+                            <th scope="col">Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>    
+        </div>
+
+         <div class="container-fluid" style="text-align: center;">
+            <h2>Bonos por Ventas</h2>
+            <table id="tablaVentas" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col">No.</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">fecha</th>
+                            <th scope="col">Monto Venta</th>
+                            <th scope="col">potcentaje Aplicado</th>
+                            <th scope="col">Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>        
+        </div>
+        
         
 </main>
 
+<script src="/js/sweetalert2@11.js"></script>
 <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
 <script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/nomina/nomina.js"></script>
+
 </body>
 </html>

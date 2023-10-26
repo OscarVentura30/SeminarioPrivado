@@ -4,7 +4,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ventasVista = exports.produccionVista = exports.insertVenta = exports.insertProduccion = exports.getListaVentas = exports.getListaProduccion = exports.bonificacionInicio = void 0;
+exports.ventasVista = exports.produccionVista = exports.insertVenta = exports.insertProduccion = exports.insertHoras = exports.getListaVentas = exports.getListaProduccion = exports.getListaHoras = exports.bonificacionInicio = void 0;
 var _database = require("../database");
 var _querys = require("../database/querys");
 var _morgan = require("morgan");
@@ -17,23 +17,13 @@ var bonificacionInicio = function bonificacionInicio(req, res) {
   var cookies = req.cookies;
   var token = cookies.tkn;
   var data = (0, _getDatosToken.datosToken)(token);
-  return res.render('bonificacionInicio', {
+  return res.render('horas', {
     usuario: data[0],
     titulo: 'Pagina Inicio'
   });
 };
 exports.bonificacionInicio = bonificacionInicio;
-var ventasVista = function ventasVista(req, res) {
-  var cookies = req.cookies;
-  var token = cookies.tkn;
-  var data = (0, _getDatosToken.datosToken)(token);
-  return res.render('ventas', {
-    usuario: data[0],
-    titulo: 'Pagina Inicio'
-  });
-};
-exports.ventasVista = ventasVista;
-var getListaVentas = /*#__PURE__*/function () {
+var getListaHoras = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
     var pool, result;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -45,7 +35,7 @@ var getListaVentas = /*#__PURE__*/function () {
         case 3:
           pool = _context.sent;
           _context.next = 6;
-          return pool.request().execute(_querys.DALbonificacion.getListaVentas);
+          return pool.request().execute(_querys.DALbonificacion.getListaHoras);
         case 6:
           result = _context.sent;
           res.json(result.recordset);
@@ -62,25 +52,25 @@ var getListaVentas = /*#__PURE__*/function () {
       }
     }, _callee, null, [[0, 10]]);
   }));
-  return function getListaVentas(_x, _x2) {
+  return function getListaHoras(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
-exports.getListaVentas = getListaVentas;
-var insertVenta = /*#__PURE__*/function () {
+exports.getListaHoras = getListaHoras;
+var insertHoras = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var _req$body, idUsuario, venta, pool, result;
+    var _req$body, idUsuario, horas, tipoHora, pool, result;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          _req$body = req.body, idUsuario = _req$body.idUsuario, venta = _req$body.venta;
+          _req$body = req.body, idUsuario = _req$body.idUsuario, horas = _req$body.horas, tipoHora = _req$body.tipoHora;
           _context2.prev = 1;
           _context2.next = 4;
           return (0, _database.getConnection)();
         case 4:
           pool = _context2.sent;
           _context2.next = 7;
-          return pool.request().input('codigoUsuario', _database.sql.VarChar, idUsuario).input('montoVenta', _database.sql.Numeric, venta).execute(_querys.DALbonificacion.insertVenta);
+          return pool.request().input('codigoUsuario', _database.sql.Int, idUsuario).input('cantidadHoras', _database.sql.Int, horas).input('tipoHora', _database.sql.Int, tipoHora).execute(_querys.DALbonificacion.insertHora);
         case 7:
           result = _context2.sent;
           return _context2.abrupt("return", res.redirect('/ventas'));
@@ -95,22 +85,22 @@ var insertVenta = /*#__PURE__*/function () {
       }
     }, _callee2, null, [[1, 11]]);
   }));
-  return function insertVenta(_x3, _x4) {
+  return function insertHoras(_x3, _x4) {
     return _ref2.apply(this, arguments);
   };
 }();
-exports.insertVenta = insertVenta;
-var produccionVista = function produccionVista(req, res) {
+exports.insertHoras = insertHoras;
+var ventasVista = function ventasVista(req, res) {
   var cookies = req.cookies;
   var token = cookies.tkn;
   var data = (0, _getDatosToken.datosToken)(token);
-  return res.render('produccion', {
+  return res.render('ventas', {
     usuario: data[0],
     titulo: 'Pagina Inicio'
   });
 };
-exports.produccionVista = produccionVista;
-var getListaProduccion = /*#__PURE__*/function () {
+exports.ventasVista = ventasVista;
+var getListaVentas = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(req, res) {
     var pool, result;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
@@ -122,7 +112,7 @@ var getListaProduccion = /*#__PURE__*/function () {
         case 3:
           pool = _context3.sent;
           _context3.next = 6;
-          return pool.request().execute(_querys.DALbonificacion.getListaProduccion);
+          return pool.request().execute(_querys.DALbonificacion.getListaVentas);
         case 6:
           result = _context3.sent;
           res.json(result.recordset);
@@ -139,25 +129,25 @@ var getListaProduccion = /*#__PURE__*/function () {
       }
     }, _callee3, null, [[0, 10]]);
   }));
-  return function getListaProduccion(_x5, _x6) {
+  return function getListaVentas(_x5, _x6) {
     return _ref3.apply(this, arguments);
   };
 }();
-exports.getListaProduccion = getListaProduccion;
-var insertProduccion = /*#__PURE__*/function () {
+exports.getListaVentas = getListaVentas;
+var insertVenta = /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(req, res) {
-    var _req$body2, idUsuario, piezas, pool, result;
+    var _req$body2, idUsuario, venta, pool, result;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
-          _req$body2 = req.body, idUsuario = _req$body2.idUsuario, piezas = _req$body2.piezas;
+          _req$body2 = req.body, idUsuario = _req$body2.idUsuario, venta = _req$body2.venta;
           _context4.prev = 1;
           _context4.next = 4;
           return (0, _database.getConnection)();
         case 4:
           pool = _context4.sent;
           _context4.next = 7;
-          return pool.request().input('codigoUsuario', _database.sql.Int, idUsuario).input('numeroPiezas', _database.sql.Int, piezas).execute(_querys.DALbonificacion.insertProduccion);
+          return pool.request().input('codigoUsuario', _database.sql.VarChar, idUsuario).input('montoVenta', _database.sql.Numeric, venta).execute(_querys.DALbonificacion.insertVenta);
         case 7:
           result = _context4.sent;
           return _context4.abrupt("return", res.redirect('/ventas'));
@@ -172,8 +162,85 @@ var insertProduccion = /*#__PURE__*/function () {
       }
     }, _callee4, null, [[1, 11]]);
   }));
-  return function insertProduccion(_x7, _x8) {
+  return function insertVenta(_x7, _x8) {
     return _ref4.apply(this, arguments);
+  };
+}();
+exports.insertVenta = insertVenta;
+var produccionVista = function produccionVista(req, res) {
+  var cookies = req.cookies;
+  var token = cookies.tkn;
+  var data = (0, _getDatosToken.datosToken)(token);
+  return res.render('produccion', {
+    usuario: data[0],
+    titulo: 'Pagina Inicio'
+  });
+};
+exports.produccionVista = produccionVista;
+var getListaProduccion = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(req, res) {
+    var pool, result;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.prev = 0;
+          _context5.next = 3;
+          return (0, _database.getConnection)();
+        case 3:
+          pool = _context5.sent;
+          _context5.next = 6;
+          return pool.request().execute(_querys.DALbonificacion.getListaProduccion);
+        case 6:
+          result = _context5.sent;
+          res.json(result.recordset);
+          _context5.next = 14;
+          break;
+        case 10:
+          _context5.prev = 10;
+          _context5.t0 = _context5["catch"](0);
+          res.status(500);
+          res.send(_context5.t0.message);
+        case 14:
+        case "end":
+          return _context5.stop();
+      }
+    }, _callee5, null, [[0, 10]]);
+  }));
+  return function getListaProduccion(_x9, _x10) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+exports.getListaProduccion = getListaProduccion;
+var insertProduccion = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(req, res) {
+    var _req$body3, idUsuario, piezas, pool, result;
+    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
+        case 0:
+          _req$body3 = req.body, idUsuario = _req$body3.idUsuario, piezas = _req$body3.piezas;
+          _context6.prev = 1;
+          _context6.next = 4;
+          return (0, _database.getConnection)();
+        case 4:
+          pool = _context6.sent;
+          _context6.next = 7;
+          return pool.request().input('codigoUsuario', _database.sql.Int, idUsuario).input('numeroPiezas', _database.sql.Int, piezas).execute(_querys.DALbonificacion.insertProduccion);
+        case 7:
+          result = _context6.sent;
+          return _context6.abrupt("return", res.redirect('/ventas'));
+        case 11:
+          _context6.prev = 11;
+          _context6.t0 = _context6["catch"](1);
+          res.status(500);
+          res.send(_context6.t0.message);
+        case 15:
+        case "end":
+          return _context6.stop();
+      }
+    }, _callee6, null, [[1, 11]]);
+  }));
+  return function insertProduccion(_x11, _x12) {
+    return _ref6.apply(this, arguments);
   };
 }();
 exports.insertProduccion = insertProduccion;

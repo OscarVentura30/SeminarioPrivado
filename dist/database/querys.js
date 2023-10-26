@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DALsalario = exports.DALbonificacion = exports.DALUsuario = exports.DALReferencias = exports.DALPuestoRol = exports.DALExpediente = exports.DALEmpresa = exports.DALDepartamento = void 0;
+exports.DALtienda = exports.DALsalario = exports.DALdeducciones = exports.DALbonificacion = exports.DALUsuario = exports.DALReferencias = exports.DALPuestoRol = exports.DALHelpers = exports.DALExpediente = exports.DALEmpresa = exports.DALDepartamento = exports.DALBanco = void 0;
 var DALUsuario = {
   getListaUsuarios: 'sp_getListaUsuarios',
   insertUsuario: 'sp_insertUsuario',
@@ -66,6 +66,37 @@ var DALbonificacion = {
   getListaVentas: 'sp_getRegistroVentas',
   insertVenta: 'sp_insertVentas',
   getListaProduccion: 'sp_getRegistroProduccion',
-  insertProduccion: 'sp_insertProduccion'
+  insertProduccion: 'sp_insertProduccion',
+  getListaHoras: 'sp_getListaHoras',
+  insertHora: 'sp_insertHora'
 };
 exports.DALbonificacion = DALbonificacion;
+var DALdeducciones = {
+  getListaAportes: 'sp_getRegistroAportes',
+  getListaAportesId: 'sp_getRegistroAportesId',
+  insertAporte: 'sp_insertAporte',
+  getListaInstitucion: 'sp_getListaInstitucion',
+  getListaAusencias: 'sp_getResgistroAusencias',
+  getListaAusenciasId: 'sp_getResgistroAusenciasid',
+  insertSolicituAusencia: 'sp_insertSolicitudAusencia',
+  aprobarSolicituAusencia: 'sp_aprobarSolicitudAusencia',
+  getRegistroCompras: 'sp_getRegistroCompras'
+};
+exports.DALdeducciones = DALdeducciones;
+var DALtienda = {
+  getProductosTienda: 'sp_getProductosTienda',
+  InsertCompraTienda: 'sp_insertCompra',
+  getRegistroComprasId: 'sp_getRegistroComprasId'
+};
+exports.DALtienda = DALtienda;
+var DALBanco = {
+  getEstadoPrestamoId: 'sp_getPrestamoId',
+  getCuotasPorIdUsuario: 'sp_getCuotasPorIdUsuario',
+  insertCreditoUsuario: 'sp_insertPrestamo',
+  getTransferenciasBancos: 'sp_getTransferenciasBancos'
+};
+exports.DALBanco = DALBanco;
+var DALHelpers = {
+  getIdUserName: 'sp_getIdporUserName'
+};
+exports.DALHelpers = DALHelpers;

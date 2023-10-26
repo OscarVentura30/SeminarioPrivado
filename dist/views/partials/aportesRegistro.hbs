@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tieda</title>
+    <title>Aportes</title>
     <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/menu/sidebars.css">
     <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
@@ -19,31 +19,29 @@
         <div class="container-fluid">
                 <div class="row" >
                 <div class="col-md-2">
-                    {{> tiendaSideBar }}
+                    {{> deduccionSideBar }}
                 <div class="col-md-9" id="Contenido">
                     <br>
-                    <h3>Productos en tienda</h3>
-                    <hr>
-                    <p class="text-start">Lista disponibles , las compras realizas en esta pagina se registran con tu usuario </p>
-                     <table id="tablaCompras" class="table table-striped" style="width:100%">
+                    <h3>Registro de Aportes</h3>
+                    
+                    <br>
+                    <table id="tablaAportes" class="table table-striped" style="width:100%">
                         <thead>
                             <tr class="table-dark">
-                            <th scope="col" >No.</th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">precio</th>
-                            <th scope="col">descripcion</th>
-                            <th scope="col">opciones</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Institucion</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">fecha</th>
+                            <th scope="col">Monto</th>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
-                    </table>
+                    </table>    
                 </div>
             </div>
         </div>
 </main>
-
-<input type="number" value="{{codigoUsuario}}"  name="idUsuario" id="idUsuario" disabled hidden>
 
 <script src="/js/sweetalert2@11.js"></script>
 <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
@@ -53,7 +51,6 @@
 <script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
 <script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
 
-<script src="/js/tienda/tiendaInicio.js"></script>
-
+<script src="/js/deduccion/aportesRegistro.js"></script>
 </body>
 </html>

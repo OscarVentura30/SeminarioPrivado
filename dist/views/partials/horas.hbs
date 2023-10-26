@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aportes</title>
+    <title>Horas</title>
     <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/menu/sidebars.css">
     <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
@@ -19,37 +19,33 @@
         <div class="container-fluid">
                 <div class="row" >
                 <div class="col-md-2">
-                    {{> aporteSideBar }}
-                <div class="col-md-8" id="Contenido">
-                    <h3>Gestion de Aportes a otras Instituciones</h3>
+                    {{> bonificacionSideBar }}
+                <div class="col-md-9" id="Contenido">
+                    <br>
+                    <h3>Registro Horas Extras</h3>
                     <hr>
-
-                     <p class="text-start text-body-secondary">Los aportes se registran con tu Usuario</p>
-
-                    <button type="button" class="btn btn-success" onclick="Nuevo()">Nuevo Aporte</button>
+                    <button type="button" class="btn btn-success" onclick="Nuevo()">Nuevo Registro</button>
                     <br>
                     <br>
-                     <table id="tablaAportes" class="table table-striped" style="width:100%">
+                    <table id="tablaHoras" class="table table-striped" style="width:100%">
                         <thead>
                             <tr class="table-dark">
                             <th scope="col">No.</th>
-                            <th scope="col">Institucion</th>
                             <th scope="col">Empleado</th>
                             <th scope="col">fecha</th>
-                            <th scope="col">Monto</th>
+                            <th scope="col">Horas</th>
+                            <th scope="col">tipo Hora</th>
+                            <th scope="col">costo Hora</th>
+                            <th scope="col">Resultado</th>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>    
                 </div>
-               
-                
             </div>
         </div>
 </main>
-
-<input type="number" value="{{codigoUsuario}}"  name="idUsuario" id="idUsuario" disabled hidden>
 
 <script src="/js/sweetalert2@11.js"></script>
 <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
@@ -59,8 +55,7 @@
 <script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
 <script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
 
-<script src="/js/deduccion/aporte.js"></script>
-
+<script src="/js/bonificacion/horas.js"></script>
 </body>
 </html>
 
@@ -74,23 +69,28 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="usuario" class="col-form-label" hidden>id</label>
-            <input type="number" class="form-control" id="usuario" name="usuario"  value="{{codigoUsuario}}" hidden disabled>
+            <label for="id" class="col-form-label" hidden>id</label>
+            <input type="number" class="form-control" id="id" name="id" hidden>
           </div>
-
-          <div class="mb-3">
-            <label for="institucion" class="form-label">Seleccione Institucion</label>
-                <select class="form-select" id="institucion" name="institucion" required>
-
+           <div class="mb-3">
+            <label for="usuario" class="form-label">Seleccione Usuario</label>
+                <select class="form-select" id="usuario" name="usuario" required>
+                    <option value="">Seleccionar Usuario</option> 
                 </select>
-            </div>
+          </div>
 
            <div class="mb-3">
-            <label for="monto" class="col-form-label">Monto</label>
-            <input type="number" class="form-control" id="monto" name="monto" required>
+            <label for="horas" class="col-form-label">Cantidad de horas a reportar</label>
+            <input type="number" class="form-control" id="horas" name="horas" required>
           </div>
 
-           
+           <div class="mb-3">
+            <label for="tipoHora" class="form-label">tipo Hora</label>
+                <select class="form-select" id="tipoHora" name="tipoHora" required>
+                    <option value="0">Simple</option> 
+                    <option value="1">Doble</option> 
+                </select>
+            </div>
 
             <p class="text-danger" id="textoError"> </p>
           </div>
@@ -102,4 +102,3 @@
     </div>
   </div>
 </div> 
-

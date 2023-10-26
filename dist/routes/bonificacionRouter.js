@@ -9,6 +9,8 @@ var _validarToken = require("../helpers/validarToken");
 var _bonificacionController = require("../controllers/bonificacionController");
 var router = (0, _express.Router)();
 router.get('/bonificacion', _validarToken.validarToken, _bonificacionController.bonificacionInicio);
+router.get('/api/listaHoras', _bonificacionController.getListaHoras);
+router.post('/api/insertHora', _bonificacionController.insertHoras);
 router.get('/ventas', _validarToken.validarToken, _bonificacionController.ventasVista);
 router.get('/api/listaVentas', _bonificacionController.getListaVentas);
 router.post('/api/insertVenta', _bonificacionController.insertVenta);

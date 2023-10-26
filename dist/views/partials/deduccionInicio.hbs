@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios</title>
+    <title>Ausencias</title>
     <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/menu/sidebars.css">
+    <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
+    <link rel="stylesheet" href="/css/dataTable/jquery.dataTables.min.css">
     <link rel="shortcut icon" href="/icon/favicon.png">
 </head>
 <body>
@@ -19,14 +21,45 @@
                 <div class="col-md-3">
                     {{> deduccionSideBar }}
                 <div class="col-md-8" id="Contenido">
-                    <h3>Registro deducciones</h3>
+                    <h3>Registro de Ausencias aprobadas y no aprobadas</h3>
                     <hr>
+
+                    <br>
+                    <br>
+                     <table id="tablaAusencias" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr class="table-dark">
+                            <th scope="col">No.</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">Fecha Solicitud</th>
+                            <th scope="col">dias Solicitados</th>
+                            <th scope="col">Descuento</th>
+                            <th scope="col">aprobado</th>
+                            <th scope="col">ID Jefe aprueba</th>
+                             <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>    
                 </div>
+               
+                
             </div>
         </div>
 </main>
 
+<input type="number" value="{{codigoUsuario}}"  name="idUsuario" id="idUsuario" disabled hidden>
+
+<script src="/js/sweetalert2@11.js"></script>
 <script src="/js/bootstrap5-3-2dist/bootstrap.min.js" ></script>
 <script src="/js/menu/sidebars.js"></script>
+<script src="/js/dataTable/datatables.min.js"></script>
+<script src="/js/dataTable/datatables.js"></script>
+<script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
+<script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
+
+<script src="/js/deduccion/ausencia.js"></script>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tieda</title>
+    <title>banco</title>
     <link rel="stylesheet" href="/css/bootstrap5-3-2dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/menu/sidebars.css">
     <link rel="stylesheet" href="/css/dataTable/datatables.min.css">
@@ -19,26 +19,31 @@
         <div class="container-fluid">
                 <div class="row" >
                 <div class="col-md-2">
-                    {{> tiendaSideBar }}
-                <div class="col-md-9" id="Contenido">
+                    {{> deduccionSideBar }}
+                <div class="col-md-8" id="Contenido">
                     <br>
-                    <h3>Productos en tienda</h3>
+                    <h3>Transferencias a Bancos</h3>
                     <hr>
-                    <p class="text-start">Lista disponibles , las compras realizas en esta pagina se registran con tu usuario </p>
-                     <table id="tablaCompras" class="table table-striped" style="width:100%">
+                    <br>
+                    <h3>Trasferencias</h3>
+                     <table id="tablaTransferencias" class="table table-striped" style="width:100%">
                         <thead>
                             <tr class="table-dark">
-                            <th scope="col" >No.</th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">precio</th>
-                            <th scope="col">descripcion</th>
-                            <th scope="col">opciones</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Empleado</th>
+                            <th scope="col">Banco</th>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
+                    <br>       
                 </div>
+               
+                
             </div>
         </div>
 </main>
@@ -53,7 +58,7 @@
 <script src="/js/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
 <script src="/js/jQuery-3.7.0/jquery.dataTables.min.js"></script>
 
-<script src="/js/tienda/tiendaInicio.js"></script>
+<script src="/js/banco/bancoTransferencia.js"></script>
 
 </body>
 </html>
